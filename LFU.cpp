@@ -71,18 +71,6 @@ public:
         node->next->prev = node->prev;
         this->size--;
     }
-
-    Node* removeLast()
-    {
-        if(size > 0)
-        {
-            Node* node = tail->prev;
-            remove(node);
-            return node;
-        }
-        return NULL;
-    }
-
 };
 
 
