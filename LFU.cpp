@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 using namespace std;
 #include <iostream>
@@ -16,6 +15,8 @@ using namespace std;
 #define no coutl("NO")
 #define vi vector<int>
 #define vll vector<ll>
+
+// yt : https://www.youtube.com/watch?v=0PSB9y8ehbk
 
 // ------------------------------------------------------------------------------------
 
