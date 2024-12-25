@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+#include <iostream>
+#include <algorithm>
+#define ll long long
+#define tot(a) a.begin(), a.end()
+#define vi vector<int>
+#define vll vector<ll>
+#define pb push_back
+#define minii(a) *mini_element(tot(a))
+#define maxi(a) *max_element(tot(a))
+#define coutl(a) cout << a << endl
+#define yes coutl("YES")
+#define no coutl("NO")
+#define vi vector<int>
+#define vll vector<ll>
+#define MOD 1000000007
+
+vector<int> ZAlgorithm(string s,string p)
+{
+    // s = "abab"
+    // p = "aba"
+    
+    string str = p + "$" + s;
+    int n = str.size();
+    vector<int> z(n,0);
+    int l = 0, r = 0;
+    for(int i = 1; i < n; i++)
+    {
+        if(i > r)
+        {
+            l = r = i;
+            while(r < n && str[r - l] == str[r])
+                r++;
+            z[i] = r - l;
+            r--;
+        }
+        else
+        {
+            // we are operating inside z block
+            int k = i - l;
+            // if value does not stretch outside the z block
+            if( i + z[k] < r + 1)
+                z[i] = z[k];
+            // otherwise try to see whether there are more matches
+            else
+            {
+                l = i;
+                while(r < n && str[r - l] == str[r])
+                    r++;
+                z[i] = r - l;
+                r--;
+            }
+        }
+    }
+
+    vector<int> ans;
+    for(int i = 0; i < n; i++)
+    {
+        if(z[i] == p.size())
+            ans.push_back(i - p.size() - 1);
+    }
+
+    return ans;
+}
