@@ -1,3 +1,5 @@
+// https://youtu.be/CpZh4eF8QBw?feature=shared&t=568
+
 #include <bits/stdc++.h>
 using namespace std;
 #include <iostream>
@@ -32,13 +34,14 @@ vector<int> ZAlgorithm(string s,string p)
             l = r = i;
             while(r < n && str[r - l] == str[r])
                 r++;
-            z[i] = r - l;
-            r--;
+            z[i] = r - l;  // no. of characters matched with the prefix substring at i th index
+            r--;  // to be inside the z block as the last r value was unmatched with the r-l prefix letter
         }
         else
         {
             // we are operating inside z block
             int k = i - l;
+
             // if value does not stretch outside the z block
             if( i + z[k] < r + 1)
                 z[i] = z[k];
